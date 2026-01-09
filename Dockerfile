@@ -7,8 +7,8 @@ RUN apt-get update && apt-get install -y dos2unix
 # Change working directory
 WORKDIR /usr/src/app
 
-# Clone FUXA repository
-RUN git clone https://github.com/frangoteam/FUXA.git
+# Copy local FUXA files instead of cloning
+COPY . /usr/src/app/FUXA
 
 # Install build dependencies for node-odbc
 RUN apt-get update && apt-get install -y build-essential unixodbc unixodbc-dev
@@ -62,8 +62,6 @@ RUN apt-get update && apt-get install -y sqlite3 libsqlite3-dev && \
     rm -rf /var/lib/apt/lists/*  && \
     npm install --build-from-source --sqlite=/usr/bin sqlite3
 
-# Add project files
-ADD . /usr/src/app/FUXA
 
 # Set working directory
 WORKDIR /usr/src/app/FUXA/server
