@@ -89,3 +89,9 @@ server/_appdata
 #client/package-lock.json
 
 server/_widgets
+
+# Docker runtime data (compose volumes)
+appdata/
+db/
+logs/
+images/
