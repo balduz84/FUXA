@@ -62,6 +62,8 @@ RUN apt-get update && apt-get install -y sqlite3 libsqlite3-dev && \
     rm -rf /var/lib/apt/lists/*  && \
     npm install --build-from-source --sqlite=/usr/bin sqlite3
 
+# Copy i18n files from src to dist (for new translations not in pre-built dist)
+RUN cp -n /usr/src/app/FUXA/client/src/assets/i18n/*.json /usr/src/app/FUXA/client/dist/assets/i18n/ 2>/dev/null || true
 
 # Set working directory
 WORKDIR /usr/src/app/FUXA/server
